@@ -1,0 +1,30 @@
+# Maven build files
+target/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Application logs
+*.log
+logs/
+
+# Java compiled files
+*.class
+
+# IDE files
+.idea/
+.vscode/
+.settings/
+.project
+.classpath
+.factorypath
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp
