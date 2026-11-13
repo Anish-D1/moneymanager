@@ -1,18 +1,19 @@
-# Money Manager  – Backend
+# Money Manager – Backend
 
-A secure RESTful backend for **Money Manager Pro**, a full-stack personal finance management application built using **Java 21 and Spring Boot**.
+A secure RESTful backend for **Money Manager**, a full-stack personal finance management application built using **Java 21 and Spring Boot**.
 
 The backend manages user authentication, account activation, income and expense records, profile management, and database operations. It provides REST APIs consumed by the React frontend.
 
 ## 🌐 Live Application
 
-- **Frontend:** [Money Manager Pro](https://money-manager-frontend-one-wine.vercel.app/)
-- **Backend:** [Money Manager Pro API](https://money-manager-backend-riu9.onrender.com)
+- **Frontend:** [Money Manager](https://money-manager-frontend-one-wine.vercel.app/)
+- **Backend:** [Money Manager API](https://money-manager-backend-riu9.onrender.com)
 - **Frontend Repository:** [moneymanagerwebapp](https://github.com/Anish-D1/moneymanagerwebapp)
 
 ## ✨ Key Features
 
 ### Authentication and Security
+
 - User registration and login
 - JWT-based authentication
 - Secure password hashing
@@ -20,16 +21,19 @@ The backend manages user authentication, account activation, income and expense 
 - Email-based account activation
 
 ### Financial Management
+
 - Income management
 - Expense management
 - Personal financial data management
 - Persistent database storage
 
 ### User Profile
+
 - User profile management
 - Profile image uploads using Cloudinary
 
 ### External Integrations
+
 - Brevo HTTPS API for account activation emails
 - Cloudinary for profile image storage
 
@@ -94,6 +98,7 @@ The application uses Spring Security and JSON Web Tokens (JWT) to secure API com
 7. The frontend uses the token when accessing protected API endpoints.
 
 **Security highlights:**
+
 - Password hashing
 - JWT-based authentication
 - Protected API endpoints
@@ -103,13 +108,9 @@ The application uses Spring Security and JSON Web Tokens (JWT) to secure API com
 
 The application uses the **Brevo HTTPS API** for sending account activation emails.
 
-This integration handles email delivery through HTTPS API requests rather than traditional SMTP-based delivery.
-
 ## 🖼️ Image Upload Integration
 
-**Cloudinary** is used for profile image storage.
-
-The backend integrates with Cloudinary to handle user profile image uploads and storage.
+**Cloudinary** is used for user profile image storage.
 
 ## 🗄️ Database
 
@@ -125,8 +126,6 @@ Database operations are handled using:
 
 The backend exposes REST endpoints for authentication, user profile management, and financial record management.
 
-The API is organized around the following functional areas:
-
 | Module | Responsibility |
 |---|---|
 | Authentication | Registration, login, and account activation |
@@ -134,13 +133,11 @@ The API is organized around the following functional areas:
 | Income | Income record management |
 | Expense | Expense record management |
 
-*Refer to the source code for the exact endpoint paths, HTTP methods, and request/response structures.*
+*Refer to the source code for exact endpoint paths, HTTP methods, and request/response structures.*
 
 ## ⚙️ Getting Started
 
 ### Prerequisites
-
-Make sure you have installed:
 
 - Java 21
 - Maven
@@ -162,7 +159,7 @@ cd moneymanager
 
 ### 3. Configure environment variables
 
-Configure the following application settings through environment variables or your local application configuration:
+Configure the following settings through environment variables or local application configuration:
 
 - PostgreSQL database URL
 - Database username and password
@@ -171,9 +168,9 @@ Configure the following application settings through environment variables or yo
 - Cloudinary credentials
 - Frontend origin for CORS
 
-Use the property names expected by your application's `application.properties` or `application.yml`.
-
 **Important:** Never commit database credentials, API keys, JWT secrets, or other sensitive information to GitHub.
+
+Use the property names expected by your application's `application.properties` or `application.yml`.
 
 ### 4. Build the application
 
@@ -208,11 +205,9 @@ https://money-manager-backend-riu9.onrender.com
 
 ## 🔗 Related Repository
 
-**Frontend Repository:**  
-[Money Manager Pro – React](https://github.com/Anish-D1/moneymanagerwebapp)
+**Frontend Repository:** [Money Manager – React](https://github.com/Anish-D1/moneymanagerwebapp)
 
-**Live Application:**  
-[Money Manager Pro](https://money-manager-frontend-one-wine.vercel.app/)
+**Live Application:** [Money Manager](https://money-manager-frontend-one-wine.vercel.app/)
 
 ## 👨‍💻 Developer
 
