@@ -1,85 +1,152 @@
-# Money Manager Pro – Backend
+# Money Manager  – Backend
 
-A RESTful backend application for **Money Manager Pro**, a personal finance management system built using Java and Spring Boot.
+A secure RESTful backend for **Money Manager Pro**, a full-stack personal finance management application built using **Java 21 and Spring Boot**.
 
-The backend handles user authentication, account activation, financial data management, database operations, and secure API communication with the React frontend.
+The backend manages user authentication, account activation, income and expense records, profile management, and database operations. It provides REST APIs consumed by the React frontend.
 
-## 🌐 Application
+## 🌐 Live Application
 
-**Frontend:** [Money Manager Pro](https://money-manager-frontend-one-wine.vercel.app/)
+- **Frontend:** [Money Manager Pro](https://money-manager-frontend-one-wine.vercel.app/)
+- **Backend:** [Money Manager Pro API](https://money-manager-backend-riu9.onrender.com)
+- **Frontend Repository:** [moneymanagerwebapp](https://github.com/Anish-D1/moneymanagerwebapp)
 
-**Backend:** [Money Manager Pro API](https://money-manager-backend-riu9.onrender.com)
+## ✨ Key Features
 
-## ✨ Features
-
+### Authentication and Security
 - User registration and login
 - JWT-based authentication
-- Password hashing and secure authentication
-- Email-based account activation
+- Secure password hashing
 - Protected REST API endpoints
+- Email-based account activation
+
+### Financial Management
 - Income management
 - Expense management
+- Personal financial data management
+- Persistent database storage
+
+### User Profile
 - User profile management
 - Profile image uploads using Cloudinary
-- PostgreSQL database integration
-- Email delivery through Brevo HTTPS API
 
-## 🛠️ Tech Stack
+### External Integrations
+- Brevo HTTPS API for account activation emails
+- Cloudinary for profile image storage
+
+## 🛠️ Technology Stack
 
 | Technology | Purpose |
 |---|---|
 | Java 21 | Backend programming language |
 | Spring Boot 3.5.3 | Backend framework |
-| Spring Security | Application security |
+| Spring Security | Authentication and authorization |
 | JWT | Token-based authentication |
 | Spring Data JPA | Database access |
-| Hibernate | ORM |
+| Hibernate | Object-relational mapping |
 | PostgreSQL | Relational database |
 | Maven | Dependency management and build |
 | Brevo HTTPS API | Email delivery |
-| Cloudinary | Profile image storage |
+| Cloudinary | Image storage |
 | Render | Backend deployment |
 
 ## 🏗️ Application Architecture
 
 ```text
-              React Frontend
-                     |
-                     | HTTP Requests
-                     | JWT Authentication
-                     v
-             Spring Boot Backend
-                     |
-          +----------+----------+
-          |          |          |
-          v          v          v
-      Security    REST APIs   Services
-          |          |          |
-          +----------+----------+
-                     |
-                     v
-              Spring Data JPA
-                     |
-                     v
-                Hibernate
-                     |
-                     v
-                PostgreSQL
+                  React Frontend
+                        |
+                        | HTTP Requests
+                        | JWT Authentication
+                        v
+                Spring Boot Backend
+                        |
+              +---------+---------+
+              |         |         |
+              v         v         v
+          Security   Controllers Services
+              |         |         |
+              +---------+---------+
+                        |
+                        v
+                 Spring Data JPA
+                        |
+                        v
+                    Hibernate
+                        |
+                        v
+                   PostgreSQL
 
-       External Integrations:
-       - Brevo HTTPS API
-       - Cloudinary
+              External Integrations
+                 /            \
+                v              v
+          Brevo HTTPS API   Cloudinary
 ```
+
+## 🔐 Authentication Flow
+
+The application uses Spring Security and JSON Web Tokens (JWT) to secure API communication.
+
+1. A user registers through the frontend.
+2. The backend processes the registration request.
+3. An account activation email is sent through Brevo.
+4. The user activates their account through the verification link.
+5. The user logs in with their credentials.
+6. The backend authenticates the user and issues a JWT.
+7. The frontend uses the token when accessing protected API endpoints.
+
+**Security highlights:**
+- Password hashing
+- JWT-based authentication
+- Protected API endpoints
+- Account activation through email verification
+
+## 📧 Email Integration
+
+The application uses the **Brevo HTTPS API** for sending account activation emails.
+
+This integration handles email delivery through HTTPS API requests rather than traditional SMTP-based delivery.
+
+## 🖼️ Image Upload Integration
+
+**Cloudinary** is used for profile image storage.
+
+The backend integrates with Cloudinary to handle user profile image uploads and storage.
+
+## 🗄️ Database
+
+The application uses **PostgreSQL** for persistent data storage.
+
+Database operations are handled using:
+
+- Spring Data JPA
+- Hibernate
+- Entity-based database mapping
+
+## 📡 REST API
+
+The backend exposes REST endpoints for authentication, user profile management, and financial record management.
+
+The API is organized around the following functional areas:
+
+| Module | Responsibility |
+|---|---|
+| Authentication | Registration, login, and account activation |
+| Profile | User profile and profile image management |
+| Income | Income record management |
+| Expense | Expense record management |
+
+*Refer to the source code for the exact endpoint paths, HTTP methods, and request/response structures.*
 
 ## ⚙️ Getting Started
 
 ### Prerequisites
 
+Make sure you have installed:
+
 - Java 21
 - Maven
 - PostgreSQL
 - Git
-- An IDE such as IntelliJ IDEA or VS Code
+- IntelliJ IDEA or another Java IDE
 
 ### 1. Clone the repository
 
@@ -95,9 +162,7 @@ cd moneymanager
 
 ### 3. Configure environment variables
 
-Configure your database credentials and external service credentials through environment variables.
-
-The application requires configuration for:
+Configure the following application settings through environment variables or your local application configuration:
 
 - PostgreSQL database URL
 - Database username and password
@@ -106,9 +171,9 @@ The application requires configuration for:
 - Cloudinary credentials
 - Frontend origin for CORS
 
-**Important:** Never commit database passwords, API keys, JWT secrets, or other credentials to GitHub.
+Use the property names expected by your application's `application.properties` or `application.yml`.
 
-Use the configuration property names expected by your application's `application.properties` or `application.yml`.
+**Important:** Never commit database credentials, API keys, JWT secrets, or other sensitive information to GitHub.
 
 ### 4. Build the application
 
@@ -122,44 +187,32 @@ mvn clean install
 mvn spring-boot:run
 ```
 
-The application runs on the configured server port.
-
-## 🔐 Security
-
-The backend uses Spring Security and JWT authentication.
-
-- Passwords are securely hashed.
-- JWT tokens are used to authenticate requests.
-- Protected endpoints require valid authentication.
-- Account activation is handled through email verification.
-
-## 📧 Email Integration
-
-Brevo's HTTPS API is used to deliver account activation emails.
-
-This integration supports account verification without relying on traditional SMTP delivery.
-
-## 🗄️ Database
-
-PostgreSQL is used for persistent storage.
-
-Spring Data JPA and Hibernate handle database interactions and object-relational mapping.
+The application starts on the configured server port.
 
 ## ☁️ Deployment
 
-The backend is deployed on **Render**.
+The backend is deployed using **Render**.
 
-- Source code managed through GitHub
-- Maven-based application build
-- Java 21 runtime
-- PostgreSQL database hosted on Supabase
-- External services integrated through secure configuration
+| Component | Platform |
+|---|---|
+| Backend API | Render |
+| Database | Supabase PostgreSQL |
+| Frontend | Vercel |
+| Email delivery | Brevo |
+| Image storage | Cloudinary |
+| Source control | GitHub |
+
+**Live Backend:**
+
+https://money-manager-backend-riu9.onrender.com
 
 ## 🔗 Related Repository
 
-**Frontend:** [Money Manager Pro – React](https://github.com/Anish-D1/moneymanagerwebapp)
+**Frontend Repository:**  
+[Money Manager Pro – React](https://github.com/Anish-D1/moneymanagerwebapp)
 
-**Live Application:** [Money Manager Pro](https://money-manager-frontend-one-wine.vercel.app/)
+**Live Application:**  
+[Money Manager Pro](https://money-manager-frontend-one-wine.vercel.app/)
 
 ## 👨‍💻 Developer
 
@@ -170,4 +223,4 @@ The backend is deployed on **Render**.
 
 ---
 
-⭐ Developed as a full-stack portfolio project to demonstrate Java backend development, REST API design, authentication, database integration, and cloud deployment.
+⭐ Developed as a hands-on full-stack portfolio project to demonstrate Java backend development, REST API design, application security, database integration, and cloud deployment.
